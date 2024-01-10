@@ -16,8 +16,24 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UIStackView!
     
+    var selectedTipPercentage: Double?
     
     @IBAction func tipChanged(_ sender: UIButton) {
+        
+        zeroPctButton.isSelected = false
+        tenPctButton.isSelected = false
+        twentyPctButton.isSelected = false
+        
+        if sender.titleLabel?.text == "0%" {
+            zeroPctButton.isSelected = true
+            selectedTipPercentage = 0.0
+        }else if sender.titleLabel?.text == "10%" {
+            tenPctButton.isSelected = true
+            selectedTipPercentage = 0.1
+        }else {
+            twentyPctButton.isSelected = true
+            selectedTipPercentage = 0.2
+        }
     }
     
     
@@ -26,6 +42,7 @@ class CalculatorViewController: UIViewController {
     
     
     @IBAction func calculatePressed(_ sender: UIButton) {
+        print(selectedTipPercentage!)
     }
 
 }
